@@ -441,9 +441,6 @@
 
  <script>
 async function approveProposal() {
-    document.getElementById('thankYouMessage').style.display = 'block';
-    document.getElementById('feedbackForm').style.display = 'none';
-    
     // Formspree'ye onay gönder
     try {
         await fetch('https://formspree.io/f/mkgblblq', {
@@ -459,17 +456,21 @@ async function approveProposal() {
         console.log('Form gönderimi başarısız:', error);
     }
     
-    setTimeout(() => {
-        alert('Teklif onayınız alındı! En kısa sürede sizinle iletişime geçeceğiz.\n\nTeşekkürler!\nFORİVİA Ekibi');
-    }, 500);
+    // Özel teşekkür mesajı göster
+    document.getElementById('feedbackForm').style.display = 'none';
+    document.getElementById('thankYouMessage').innerHTML = `
+        <p style="color: #1d1d1f; font-weight: 600; margin: 0 0 10px 0; font-size: 16px;">🎉 Teşekkür ederiz!</p>
+        <p style="color: #424245; margin: 0; font-size: 14px; line-height: 1.5;">
+            Beraber çalışacağımız için çok mutluyuz. En kısa sürede sizinle iletişime geçip 
+            projenin nasıl ilerleyeceğine dair detaylı bilgi vereceğiz.
+        </p>
+    `;
+    document.getElementById('thankYouMessage').style.display = 'block';
 }
 
 async function sendFeedback() {
     const feedback = document.getElementById('feedbackText').value.trim();
     if (feedback) {
-        document.getElementById('feedbackForm').style.display = 'none';
-        document.getElementById('thankYouMessage').style.display = 'block';
-        
         // Formspree'ye feedback gönder
         try {
             await fetch('https://formspree.io/f/mkgblblq', {
@@ -485,11 +486,23 @@ async function sendFeedback() {
             console.log('Form gönderimi başarısız:', error);
         }
         
-        setTimeout(() => {
-            alert('Notlarınız alındı! En kısa sürede değerlendirip sizinle iletişime geçeceğiz.\n\nTeşekkürler!\nFORİVİA Ekibi');
-        }, 500);
+        // Feedback teşekkür mesajı göster
+        document.getElementById('feedbackForm').style.display = 'none';
+        document.getElementById('thankYouMessage').innerHTML = `
+            <p style="color: #1d1d1f; font-weight: 600; margin: 0 0 10px 0; font-size: 16px;">✅ Notlarınız Alındı!</p>
+            <p style="color: #424245; margin: 0; font-size: 14px; line-height: 1.5;">
+                Değerli geri bildirimlerinizi inceleyip en kısa sürede tarafınıza 
+                detaylı dönüş yapacağız.
+            </p>
+        `;
+        document.getElementById('thankYouMessage').style.display = 'block';
     } else {
-        alert('Lütfen notlarınızı yazın.');
+        // Bu alert'i de daha güzel yapalım
+        document.getElementById('feedbackText').style.border = '2px solid #ff3b30';
+        document.getElementById('feedbackText').setAttribute('placeholder', 'Lütfen notlarınızı buraya yazın...');
+        setTimeout(() => {
+            document.getElementById('feedbackText').style.border = '1px solid rgba(0,0,0,0.1)';
+        }, 3000);
     }
 }
 
@@ -502,6 +515,7 @@ function requestRevision() {
 function cancelFeedback() {
     document.getElementById('feedbackForm').style.display = 'none';
     document.getElementById('feedbackText').value = '';
+    document.getElementById('thankYouMessage').style.display = 'none';
 }
 </script>
 </body>
