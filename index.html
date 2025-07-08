@@ -387,7 +387,7 @@
         </div>
         <div class="summary-item total">
             <span>Toplam Proje Tutarı:</span>
-            <span>[TUTAR] TL</span>
+            <span>[TUTAR] TL*</span>
         </div>
     </div>
 
@@ -423,12 +423,12 @@
     <div class="terms">
         <div class="terms-title">ÖDEME KOŞULLARI VE ŞARTLAR</div>
         <ul>
-            <li><strong>KDV:</strong> Belirtilen tutarlar KDV dahil değildir (%20 KDV ilave edilecektir)</li>
+            <li><strong>*KDV:</strong> Belirtilen tutarlar KDV dahil değildir (%20 KDV ilave edilecektir)</li>
             <li><strong>Teklif Geçerlilik Süresi:</strong> 30 gün</li>
             <li><strong>Ödeme Planı:</strong> %30 Proje Başlangıcı, %40 İlk Teslimat, %30 Final Teslim</li>
             <li><strong>Destek:</strong> 3 aylık ücretsiz teknik destek dahildir</li>
             <li><strong>Eğitim:</strong> Son kullanıcı eğitimleri ve admin eğitimi dahildir</li>
-            <li><strong>Bakım Anlaşması:</strong> 3 aylık destek süresi sonrası yıllık bakım anlaşması önerilir (proje tutarının %20'si/yıl)</li>
+            <li><strong>Bakım Anlaşması:</strong> 3 aylık destek süresi sonrası yıllık bakım anlaşması önerilir. Talep durumda ayrıca detaylı teklif oluşturulabilir.</li>
         </ul>
     </div>
 
@@ -441,7 +441,6 @@
 
  <script>
 async function approveProposal() {
-    // Formspree'ye onay gönder
     try {
         await fetch('https://formspree.io/f/mkgblblq', {
             method: 'POST',
@@ -456,13 +455,12 @@ async function approveProposal() {
         console.log('Form gönderimi başarısız:', error);
     }
     
-    // Özel teşekkür mesajı göster
     document.getElementById('feedbackForm').style.display = 'none';
     document.getElementById('thankYouMessage').innerHTML = `
-        <p style="color: #1d1d1f; font-weight: 600; margin: 0 0 10px 0; font-size: 16px;">🎉 Teşekkür ederiz!</p>
+        <p style="color: #1d1d1f; font-weight: 600; margin: 0 0 12px 0; font-size: 16px;">Teşekkür ederiz</p>
         <p style="color: #424245; margin: 0; font-size: 14px; line-height: 1.5;">
-            Beraber çalışacağımız için çok mutluyuz. En kısa sürede sizinle iletişime geçip 
-            projenin nasıl ilerleyeceğine dair detaylı bilgi vereceğiz.
+            Teklifinizi onayladığınız için teşekkür ederiz. Bu projeyi birlikte hayata geçireceğimiz için çok memnunuz. 
+            En kısa sürede sizinle iletişime geçerek proje sürecinin detaylarını ve başlangıç tarihini paylaşacağız.
         </p>
     `;
     document.getElementById('thankYouMessage').style.display = 'block';
@@ -471,7 +469,6 @@ async function approveProposal() {
 async function sendFeedback() {
     const feedback = document.getElementById('feedbackText').value.trim();
     if (feedback) {
-        // Formspree'ye feedback gönder
         try {
             await fetch('https://formspree.io/f/mkgblblq', {
                 method: 'POST',
@@ -486,18 +483,16 @@ async function sendFeedback() {
             console.log('Form gönderimi başarısız:', error);
         }
         
-        // Feedback teşekkür mesajı göster
         document.getElementById('feedbackForm').style.display = 'none';
         document.getElementById('thankYouMessage').innerHTML = `
-            <p style="color: #1d1d1f; font-weight: 600; margin: 0 0 10px 0; font-size: 16px;">✅ Notlarınız Alındı!</p>
+            <p style="color: #1d1d1f; font-weight: 600; margin: 0 0 12px 0; font-size: 16px;">Notlarınız alındı</p>
             <p style="color: #424245; margin: 0; font-size: 14px; line-height: 1.5;">
-                Değerli geri bildirimlerinizi inceleyip en kısa sürede tarafınıza 
-                detaylı dönüş yapacağız.
+                Geri bildirimlerinizi aldık ve incelemeye başladık. Değerlendirme sürecinin ardından 
+                en kısa sürede sizinle iletişime geçerek detaylı dönüş yapacağız.
             </p>
         `;
         document.getElementById('thankYouMessage').style.display = 'block';
     } else {
-        // Bu alert'i de daha güzel yapalım
         document.getElementById('feedbackText').style.border = '2px solid #ff3b30';
         document.getElementById('feedbackText').setAttribute('placeholder', 'Lütfen notlarınızı buraya yazın...');
         setTimeout(() => {
