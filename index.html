@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proje Teklifi - Operasyon Yönetimi Uygulaması</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+            line-height: 1.4;
+            color: #1d1d1f;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 25px 20px;
+            background: #ffffff;
+            font-size: 13px;
+        }
+        
+        .header {
+            text-align: center;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #1d1d1f;
+            padding: 40px 30px;
+            border-radius: 20px;
+            margin-bottom: 35px;
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+        
+        .company-name {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+        
+        .project-title {
+            font-size: 20px;
+            font-weight: 500;
+            color: #424245;
+            margin-bottom: 8px;
+            letter-spacing: -0.3px;
+        }
+        
+        .subtitle {
+            font-size: 14px;
+            color: #6e6e73;
+            font-weight: 400;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #f5f5f7;
+            letter-spacing: -0.3px;
+        }
+        
+        .module {
+            margin-bottom: 16px;
+            padding: 20px 24px;
+            background: linear-gradient(135deg, #fbfbfd 0%, #f5f5f7 100%);
+            border-radius: 16px;
+            border: 1px solid rgba(0,0,0,0.04);
+            transition: all 0.2s ease;
+        }
+        
+        .module:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-color: #30d158;
+        }
+        
+        .module-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 8px;
+            letter-spacing: -0.2px;
+        }
+        
+        .module-description {
+            font-size: 12px;
+            color: #424245;
+            line-height: 1.5;
+        }
+        
+        .summary-box {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #1d1d1f;
+            padding: 30px;
+            border-radius: 20px;
+            margin-top: 35px;
+            border: 1px solid rgba(0,0,0,0.06);
+            position: relative;
+        }
+        
+        .summary-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(48, 209, 88, 0.05) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(48, 209, 88, 0.05) 0%, transparent 50%);
+            border-radius: 20px;
+        }
+        
+        .summary-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            text-align: center;
+            position: relative;
+            letter-spacing: -0.3px;
+            color: #1d1d1f;
+        }
+        
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-size: 14px;
+            position: relative;
+            padding: 10px 0;
+            color: #424245;
+        }
+        
+        .summary-item.total {
+            border-top: 1px solid rgba(0,0,0,0.08);
+            padding-top: 20px;
+            margin-top: 20px;
+            font-weight: 600;
+            font-size: 16px;
+            color: #1d1d1f;
+            background: rgba(48, 209, 88, 0.05);
+            margin: 20px -30px -30px -30px;
+            padding: 20px 30px;
+            border-radius: 0 0 20px 20px;
+        }
+        
+        .terms {
+            margin-top: 25px;
+            padding: 24px;
+            background: linear-gradient(135deg, #fbfbfd 0%, #f5f5f7 100%);
+            border-radius: 16px;
+            font-size: 11px;
+            color: #424245;
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+        
+        .terms-title {
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #1d1d1f;
+            font-size: 14px;
+            letter-spacing: -0.2px;
+        }
+        
+        .terms ul {
+            margin: 12px 0;
+            padding-left: 18px;
+        }
+        
+        .terms li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+        
+        .terms li strong {
+            color: #1d1d1f;
+        }
+        
+        .interactive-section {
+            margin: 30px 0;
+            padding: 25px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 16px;
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+        
+        .interactive-title {
+            text-align: center;
+            color: #1d1d1f;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            letter-spacing: -0.2px;
+        }
+        
+        .interactive-subtitle {
+            text-align: center;
+            color: #424245;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        
+        .btn {
+            border: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            letter-spacing: -0.2px;
+        }
+        
+        .btn-primary {
+            background: #30d158;
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, #fbfbfd 0%, #f5f5f7 100%);
+            color: #1d1d1f;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        .btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .feedback-form {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            border: 1px solid rgba(0,0,0,0.06);
+        }
+        
+        .feedback-textarea {
+            width: 100%;
+            height: 80px;
+            padding: 12px;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 13px;
+            resize: vertical;
+            box-sizing: border-box;
+        }
+        
+        .thank-you {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            background: rgba(48, 209, 88, 0.1);
+            border-radius: 12px;
+            border: 1px solid rgba(48, 209, 88, 0.2);
+        }
+        
+        .thank-you p {
+            color: #1d1d1f;
+            font-weight: 600;
+            margin: 0;
+            font-size: 14px;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 35px;
+            padding: 24px;
+            background: linear-gradient(135deg, #fbfbfd 0%, #f5f5f7 100%);
+            border-radius: 16px;
+            color: #424245;
+            font-size: 12px;
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+        
+        @media print {
+            .interactive-section { display: none; }
+            body { margin: 0; padding: 20px; }
+            .header { page-break-after: avoid; }
+            .module { page-break-inside: avoid; }
+            .module:hover { transform: none; box-shadow: none; }
+            .summary-box::before { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="company-name">PLURES AIR</div>
+        <div class="project-title">OPERASYON YÖNETİMİ UYGULAMASI</div>
+        <div class="subtitle">Mobil Uygulama ve Web Dashboard Geliştirme Teklifi</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">PROJE HAKKINDA</div>
+        <div style="padding: 20px 24px; background: linear-gradient(135deg, #fbfbfd 0%, #f5f5f7 100%); border-radius: 16px; border: 1px solid rgba(0,0,0,0.04); margin-bottom: 20px;">
+            <p style="margin: 0; font-size: 13px; color: #424245; line-height: 1.6;">
+                Plures Air'in operasyonel süreçlerini dijitalleştiren kapsamlı bir çözüm geliştiriyoruz. Müşteri talebinden uçuş tamamlanmasına kadar tüm süreci kapsayan bu uygulama, template-based doküman üretimi, otomatik görev dağılımı ve real-time takip sistemi ile operasyonel verimliliği maksimize edecek. iOS ve Android native uygulamalar ile sahada çalışan personelin mobil erişimi sağlanırken, web dashboard ile merkezi yönetim ve raporlama imkanı sunulacak.
+            </p>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">PROJE KAPSAMI VE MODÜLLER</div>
+        
+        <div class="module">
+            <div class="module-title">1. Sistem Altyapı ve Güvenlik</div>
+            <div class="module-description">
+                Modern ve güvenli backend API geliştirme, veritabanı tasarımı ve kullanıcı yönetim sistemi. Rol bazlı erişim kontrolü ve sistem güvenliği altyapısının kurulumu. Tüm sistemin temelini oluşturan core teknoloji stack'inin geliştirilmesi.
+            </div>
+        </div>
+
+        <div class="module">
+            <div class="module-title">2. Template Yönetim Sistemi</div>
+            <div class="module-description">
+                Brief, teklif ve sözleşme dokümanları için template engine geliştirme. Mevcut formatlarınızın sisteme entegrasyonu ve otomatik PDF oluşturma. Template seçim arayüzleri ve doküman görüntüleme sistemleri.
+            </div>
+        </div>
+
+        <div class="module">
+            <div class="module-title">3. Görev Yönetim Sistemi (CORE)</div>
+            <div class="module-description">
+                Uçuş operasyonlarının kalbi olan task management sistemi. Uçuş tiplerinden görev şablonları, otomatik görev dağılım algoritması, kişisel görev listeleri ve real-time progress tracking. Tekliften uçak park edilişine kadar tüm mikro görevlerin yönetimi.
+            </div>
+        </div>
+
+        <div class="module">
+            <div class="module-title">4. Uçuş Süreci Yönetimi</div>
+            <div class="module-description">
+                Talep alımından tamamlanmış uçuşa kadar tüm iş akışının yönetimi. Otomatik durum geçişleri, iş akışı motoru ve bildirim sistemleri. "Teklif Hazırlama" → "Müşteri Onayı" → "Sözleşme" → "Brief" → "Operasyon" sürecinin otomasyonu.
+            </div>
+        </div>
+
+        <div class="module">
+            <div class="module-title">5. Mobil Uygulamalar</div>
+            <div class="module-description">
+                iOS ve Android native mobil uygulamalar. Sahada çalışan personel için optimized task management arayüzleri, offline çalışma capability ve push notification sistemi. Mobil-first yaklaşımla kullanıcı deneyimi odaklı geliştirme.
+            </div>
+        </div>
+
+        <div class="module">
+            <div class="module-title">6. Web Admin Dashboard</div>
+            <div class="module-description">
+                Merkezi yönetim için web tabanlı admin paneli. Tüm uçuşların takibi, master data yönetimi ve raporlama arayüzleri. Mobil tasarımın web'de responsive olarak görüntülenmesi ve yönetim fonksiyonları.
+            </div>
+        </div>
+
+        <div class="module">
+            <div class="module-title">7. UI/UX Tasarım</div>
+            <div class="module-description">
+                Mobil-first yaklaşımla kullanıcı arayüzü ve deneyimi tasarımı. Operasyonel süreçlere optimize edilmiş arayüzler, prototipleme ve mockup hazırlama. Kullanıcı dostu ve verimli çalışma ortamı tasarımı.
+            </div>
+        </div>
+
+        <div class="module">
+            <div class="module-title">8. Test, Deployment ve Eğitim</div>
+            <div class="module-description">
+                Kapsamlı sistem testleri, kalite kontrolü ve production ortamına deployment. Kullanıcı eğitimleri, dokümantasyon hazırlama ve go-live desteği. Sistem stabilizasyonu ve post-launch support.
+            </div>
+        </div>
+    </div>
+
+    <div class="summary-box">
+        <div class="summary-title">PROJE ÖZETİ</div>
+        <div class="summary-item">
+            <span>Tahmini Proje Süresi:</span>
+            <span>4-5 Ay</span>
+        </div>
+        <div class="summary-item">
+            <span>Takım Büyüklüğü:</span>
+            <span>7-8 Uzman</span>
+        </div>
+        <div class="summary-item">
+            <span>Platform:</span>
+            <span>iOS, Android, Web</span>
+        </div>
+        <div class="summary-item total">
+            <span>Toplam Proje Tutarı:</span>
+            <span>[TUTAR] TL</span>
+        </div>
+    </div>
+
+    <div class="interactive-section">
+        <div class="interactive-title">TEKLİFİ ONAYLIYOR MUSUNUZ?</div>
+        <div class="interactive-subtitle">Teklifi onaylarsanız en kısa sürede sizinle iletişime geçeceğiz.</div>
+        
+        <div class="button-group">
+            <button class="btn btn-primary" onclick="approveProposal()">
+                ✓ TEKLİFİ ONAYLIYORUM
+            </button>
+            <button class="btn btn-secondary" onclick="requestRevision()">
+                📝 NOTLARIM VAR
+            </button>
+            <button class="btn btn-secondary" onclick="window.print()">
+                🖨️ PDF YAZDIR
+            </button>
+        </div>
+        
+        <div id="feedbackForm" class="feedback-form">
+            <textarea id="feedbackText" class="feedback-textarea" placeholder="Notlarınızı, sorularınızı veya revizyon taleplerınızı buraya yazın..."></textarea>
+            <div style="margin-top: 15px; display: flex; gap: 10px; justify-content: flex-end;">
+                <button class="btn btn-primary" onclick="sendFeedback()">GÖNDER</button>
+                <button class="btn btn-secondary" onclick="cancelFeedback()">İPTAL</button>
+            </div>
+        </div>
+        
+        <div id="thankYouMessage" class="thank-you">
+            <p>✓ Teşekkürler! Mesajınız alındı. En kısa sürede sizinle iletişime geçeceğiz.</p>
+        </div>
+    </div>
+
+    <div class="terms">
+        <div class="terms-title">ÖDEME KOŞULLARI VE ŞARTLAR</div>
+        <ul>
+            <li><strong>KDV:</strong> Belirtilen tutarlar KDV dahil değildir (%20 KDV ilave edilecektir)</li>
+            <li><strong>Teklif Geçerlilik Süresi:</strong> 30 gün</li>
+            <li><strong>Ödeme Planı:</strong> %30 Proje Başlangıcı, %40 İlk Teslimat, %30 Final Teslim</li>
+            <li><strong>Destek:</strong> 3 aylık ücretsiz teknik destek dahildir</li>
+            <li><strong>Eğitim:</strong> Son kullanıcı eğitimleri ve admin eğitimi dahildir</li>
+            <li><strong>Bakım Anlaşması:</strong> 3 aylık destek süresi sonrası yıllık bakım anlaşması önerilir (proje tutarının %20'si/yıl)</li>
+        </ul>
+    </div>
+
+    <div class="footer">
+        <p>Bu teklif 7 Temmuz 2025 tarihinde hazırlanmıştır. Detaylı görüşme için bizimle iletişime geçebilirsiniz.</p>
+        <p><strong>FORİVİA DIŞ TİC. LTD. ŞTİ.</strong></p>
+        <p>Tekstilkent Koza Plaza A blok K:1 No:2 Esenler İstanbul</p>
+        <p>Email: destek@forivia.com • V.D.: Atışalanı • VKN: 3880621924</p>
+    </div>
+
+    <script>
+        function approveProposal() {
+            document.getElementById('thankYouMessage').style.display = 'block';
+            document.getElementById('feedbackForm').style.display = 'none';
+            
+            setTimeout(() => {
+                alert('Teklif onayınız alındı! En kısa sürede sizinle iletişime geçeceğiz.\n\nTeşekkürler!\nFORİVİA Ekibi');
+            }, 500);
+        }
+        
+        function requestRevision() {
+            document.getElementById('feedbackForm').style.display = 'block';
+            document.getElementById('thankYouMessage').style.display = 'none';
+            document.getElementById('feedbackText').focus();
+        }
+        
+        function sendFeedback() {
+            const feedback = document.getElementById('feedbackText').value.trim();
+            if (feedback) {
+                document.getElementById('feedbackForm').style.display = 'none';
+                document.getElementById('thankYouMessage').style.display = 'block';
+                
+                setTimeout(() => {
+                    alert('Notlarınız alındı! En kısa sürede değerlendirip sizinle iletişime geçeceğiz.\n\nTeşekkürler!\nFORİVİA Ekibi');
+                }, 500);
+            } else {
+                alert('Lütfen notlarınızı yazın.');
+            }
+        }
+        
+        function cancelFeedback() {
+            document.getElementById('feedbackForm').style.display = 'none';
+            document.getElementById('feedbackText').value = '';
+        }
+    </script>
+</body>
+</html>
