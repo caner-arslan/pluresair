@@ -439,40 +439,70 @@
         <p>Email: destek@forivia.com • V.D.: Atışalanı • VKN: 3880621924</p>
     </div>
 
-    <script>
-        function approveProposal() {
-            document.getElementById('thankYouMessage').style.display = 'block';
-            document.getElementById('feedbackForm').style.display = 'none';
-            
-            setTimeout(() => {
-                alert('Teklif onayınız alındı! En kısa sürede sizinle iletişime geçeceğiz.\n\nTeşekkürler!\nFORİVİA Ekibi');
-            }, 500);
+ <script>
+async function approveProposal() {
+    document.getElementById('thankYouMessage').style.display = 'block';
+    document.getElementById('feedbackForm').style.display = 'none';
+    
+    // Formspree'ye onay gönder
+    try {
+        await fetch('https://formspree.io/f/mkgblblq', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                durum: 'TEKLİF ONAYLANDI',
+                mesaj: 'Müşteri teklifi onayladı',
+                tarih: new Date().toLocaleString('tr-TR')
+            })
+        });
+    } catch (error) {
+        console.log('Form gönderimi başarısız:', error);
+    }
+    
+    setTimeout(() => {
+        alert('Teklif onayınız alındı! En kısa sürede sizinle iletişime geçeceğiz.\n\nTeşekkürler!\nFORİVİA Ekibi');
+    }, 500);
+}
+
+async function sendFeedback() {
+    const feedback = document.getElementById('feedbackText').value.trim();
+    if (feedback) {
+        document.getElementById('feedbackForm').style.display = 'none';
+        document.getElementById('thankYouMessage').style.display = 'block';
+        
+        // Formspree'ye feedback gönder
+        try {
+            await fetch('https://formspree.io/f/mkgblblq', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    durum: 'NOTLAR/FEEDBACK',
+                    mesaj: feedback,
+                    tarih: new Date().toLocaleString('tr-TR')
+                })
+            });
+        } catch (error) {
+            console.log('Form gönderimi başarısız:', error);
         }
         
-        function requestRevision() {
-            document.getElementById('feedbackForm').style.display = 'block';
-            document.getElementById('thankYouMessage').style.display = 'none';
-            document.getElementById('feedbackText').focus();
-        }
-        
-        function sendFeedback() {
-            const feedback = document.getElementById('feedbackText').value.trim();
-            if (feedback) {
-                document.getElementById('feedbackForm').style.display = 'none';
-                document.getElementById('thankYouMessage').style.display = 'block';
-                
-                setTimeout(() => {
-                    alert('Notlarınız alındı! En kısa sürede değerlendirip sizinle iletişime geçeceğiz.\n\nTeşekkürler!\nFORİVİA Ekibi');
-                }, 500);
-            } else {
-                alert('Lütfen notlarınızı yazın.');
-            }
-        }
-        
-        function cancelFeedback() {
-            document.getElementById('feedbackForm').style.display = 'none';
-            document.getElementById('feedbackText').value = '';
-        }
-    </script>
+        setTimeout(() => {
+            alert('Notlarınız alındı! En kısa sürede değerlendirip sizinle iletişime geçeceğiz.\n\nTeşekkürler!\nFORİVİA Ekibi');
+        }, 500);
+    } else {
+        alert('Lütfen notlarınızı yazın.');
+    }
+}
+
+function requestRevision() {
+    document.getElementById('feedbackForm').style.display = 'block';
+    document.getElementById('thankYouMessage').style.display = 'none';
+    document.getElementById('feedbackText').focus();
+}
+
+function cancelFeedback() {
+    document.getElementById('feedbackForm').style.display = 'none';
+    document.getElementById('feedbackText').value = '';
+}
+</script>
 </body>
 </html>
