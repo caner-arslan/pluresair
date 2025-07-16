@@ -365,12 +365,69 @@
         
         @media print {
             .interactive-section { display: none; }
-            body { margin: 0; padding: 20px; }
-            .header { page-break-after: avoid; }
-            .module { page-break-inside: avoid; }
-            .module:hover { transform: none; box-shadow: none; }
-            .summary-box::before { display: none; }
-            .module-compliance::before { display: none; }
+            body { 
+                margin: 0; 
+                padding: 20px; 
+                font-size: 12px;
+                line-height: 1.3;
+            }
+            .header { 
+                page-break-after: avoid; 
+                margin-bottom: 25px;
+            }
+            .module { 
+                page-break-inside: avoid; 
+                margin-bottom: 12px;
+            }
+            .module:hover { 
+                transform: none; 
+                box-shadow: none; 
+            }
+            .summary-box {
+                page-break-before: always;
+                page-break-inside: avoid;
+                margin-top: 0;
+                padding: 25px;
+            }
+            .summary-box::before { 
+                display: none; 
+            }
+            .module-compliance::before { 
+                display: none; 
+            }
+            .terms {
+                page-break-inside: avoid;
+                margin-top: 20px;
+                padding: 20px;
+            }
+            .footer {
+                page-break-before: avoid;
+                margin-top: 20px;
+                padding: 20px;
+            }
+            .section-title {
+                page-break-after: avoid;
+                margin-bottom: 15px;
+            }
+            /* Modüllerin gruplar halinde kesilmesini engelle */
+            .module:nth-child(1),
+            .module:nth-child(2),
+            .module:nth-child(3) {
+                page-break-after: avoid;
+            }
+            .module:nth-child(4) {
+                page-break-after: auto;
+            }
+            /* Compliance modüllerinin birlikte kalmasını sağla */
+            .module-compliance {
+                page-break-inside: avoid;
+            }
+            .module-compliance:first-of-type {
+                page-break-before: auto;
+            }
+            .module-compliance:last-of-type {
+                page-break-after: auto;
+            }
         }
     </style>
 </head>
@@ -547,7 +604,7 @@
     </div>
 
     <div class="footer">
-        <p>Bu teklif 8 Temmuz 2025 tarihinde hazırlanmıştır. 8. ve 9. maddeler eklenerek 14 Temmuz 2025 tarihinde güncellenmiştir. Detaylı görüşme için bizimle iletişime geçebilirsiniz.</p>
+        <p>Bu teklif 15 Temmuz 2025 tarihinde hazırlanmıştır. Detaylı görüşme için bizimle iletişime geçebilirsiniz.</p>
         <p><strong>FORİVİA DIŞ TİC. LTD. ŞTİ.</strong></p>
         <p>Tekstilkent Koza Plaza A blok K:1 No:2 Esenler İstanbul</p>
         <p>Email: destek@forivia.com • V.D.: Atışalanı • VKN: 3880621924</p>
@@ -560,7 +617,7 @@ async function approveProposal() {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                durum: 'PLURES - TEKLİF ONAYLANDI',
+                durum: 'TEKLİF ONAYLANDI',
                 mesaj: 'Müşteri güncellenmiş teklifi (Compliance modülü dahil) onayladı - Toplam: 2.030.000 TL',
                 tarih: new Date().toLocaleString('tr-TR')
             })
