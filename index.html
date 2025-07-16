@@ -77,6 +77,30 @@
             border-color: #30d158;
         }
         
+        .module-compliance {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+            border: 1px solid rgba(243, 156, 18, 0.2);
+            position: relative;
+        }
+        
+        .module-compliance::before {
+            content: "YENİ";
+            position: absolute;
+            top: -8px;
+            right: 15px;
+            background: #f39c12;
+            color: white;
+            padding: 4px 8px;
+            font-size: 10px;
+            font-weight: 600;
+            border-radius: 4px;
+            letter-spacing: 0.5px;
+        }
+        
+        .module-compliance:hover {
+            border-color: #f39c12;
+        }
+        
         .module-title {
             font-size: 15px;
             font-weight: 600;
@@ -89,6 +113,29 @@
             font-size: 12px;
             color: #424245;
             line-height: 1.5;
+        }
+        
+        .compliance-note {
+            margin-top: 12px;
+            padding: 12px;
+            background: rgba(243, 156, 18, 0.1);
+            border-radius: 8px;
+            border: 1px solid rgba(243, 156, 18, 0.2);
+        }
+        
+        .compliance-note-title {
+            font-size: 11px;
+            font-weight: 600;
+            color: #d68910;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .compliance-note-text {
+            font-size: 11px;
+            color: #8e5a00;
+            line-height: 1.4;
         }
         
         .summary-box {
@@ -131,6 +178,14 @@
             position: relative;
             padding: 10px 0;
             color: #424245;
+        }
+        
+        .summary-item.highlight {
+            background: rgba(243, 156, 18, 0.1);
+            margin: 12px -30px;
+            padding: 12px 30px;
+            border-radius: 8px;
+            border: 1px solid rgba(243, 156, 18, 0.2);
         }
         
         .summary-item.total {
@@ -176,6 +231,29 @@
         
         .terms li strong {
             color: #1d1d1f;
+        }
+        
+        .compliance-disclaimer {
+            margin-top: 16px;
+            padding: 16px;
+            background: rgba(243, 156, 18, 0.1);
+            border-radius: 8px;
+            border: 1px solid rgba(243, 156, 18, 0.2);
+        }
+        
+        .compliance-disclaimer-title {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #d68910;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .compliance-disclaimer-text {
+            font-size: 11px;
+            color: #8e5a00;
+            line-height: 1.4;
         }
         
         .interactive-section {
@@ -292,6 +370,7 @@
             .module { page-break-inside: avoid; }
             .module:hover { transform: none; box-shadow: none; }
             .summary-box::before { display: none; }
+            .module-compliance::before { display: none; }
         }
     </style>
 </head>
@@ -369,13 +448,41 @@
                 Kapsamlı sistem testleri, kalite kontrolü ve production ortamına deployment. Kullanıcı eğitimleri, dokümantasyon hazırlama ve go-live desteği. Sistem stabilizasyonu ve post-launch support.
             </div>
         </div>
+
+        <div class="module module-compliance">
+            <div class="module-title">9. Raporlama Modülü</div>
+            <div class="module-description">
+                Yeni platform iş akışı üzerinden elde edilen veriler ile tarafınızdan belirtilecek raporların oluşturulması. Uçuş operasyonları, görev tamamlanma oranları, personel performansı ve süreç analizi raporları. Aynı zamanda Netsis ERP danışmanınız ile yapılabilecek çalışma sayesinde Netsis ERP'deki uygun raporlarınızın da platformda görüntülenebilmesi.
+            </div>
+        </div>
+
+        <div class="module module-compliance">
+            <div class="module-title">10. Basic Pilot Compliance Management</div>
+            <div class="module-description">
+                Pilot çalışma sürelerinin takibi ve uçuş uygunluk kontrolü sistemi. Pilotların günlük, haftalık, aylık ve yıllık görev sürelerinin hesaplanması, dinlenme periyodlarının takibi ve otomatik uygunluk kontrolü. Uçuş planlaması sırasında "Bu pilot bu uçuşa uygun mu?" sorusuna anında yanıt veren akıllı sistem ile manuel hesaplama hatalarını ortadan kaldırmayı amaçlar.
+            </div>
+            <div class="compliance-note">
+                <div class="compliance-note-title">Önemli Sistem Notu</div>
+                <div class="compliance-note-text">
+                    Bu modül, şirketinizin pilot çalışma kuralları ve hesaplama yöntemleri temel alınarak geliştirilecektir. Tarafınızdan iletilecek doküman, bilgi, kural ve hesaplama yöntemleri algoritma haline getirilerek sisteme entegre edilecektir. Algoritma doğruluğu, kullanıma açılmadan önce şirketinizin testi ve onayı ile kesinleştirilecektir.
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="summary-box">
         <div class="summary-title">PROJE ÖZETİ</div>
         <div class="summary-item">
+            <span>Ana Sistem:</span>
+            <span>1.590.000 TL</span>
+        </div>
+        <div class="summary-item highlight">
+            <span>Pilot Compliance Modülü & Raporlama:</span>
+            <span>440.000 TL</span>
+        </div>
+        <div class="summary-item">
             <span>Tahmini Proje Süresi:</span>
-            <span>4-5 Ay</span>
+            <span>5-6 Ay</span>
         </div>
         <div class="summary-item">
             <span>Takım Büyüklüğü:</span>
@@ -387,7 +494,7 @@
         </div>
         <div class="summary-item total">
             <span>Toplam Proje Tutarı:</span>
-            <span>1.590.000 TL*</span>
+            <span>2.030.000 TL*</span>
         </div>
     </div>
 
@@ -430,10 +537,17 @@
             <li><strong>Eğitim:</strong> Son kullanıcı eğitimleri ve admin eğitimi dahildir</li>
             <li><strong>Bakım Anlaşması:</strong> 3 aylık destek süresi sonrası yıllık bakım anlaşması önerilir. Talep durumda ayrıca detaylı teklif oluşturulabilir.</li>
         </ul>
+        
+        <div class="compliance-disclaimer">
+            <div class="compliance-disclaimer-title">Ek Modüller Sistem Notu</div>
+            <div class="compliance-disclaimer-text">
+                Raporlama ve Basic Pilot Compliance Management modülleri, şirketinizin mevcut iş süreçleri ve hesaplama yöntemleri temel alınarak geliştirilecektir. Sistem algoritmaları ve rapor formatları, kullanıma açılmadan önce şirketiniz tarafından test edilerek onaylanacaktır. Geliştirici firma, şirket onayı sonrasında sistemin kullanımından kaynaklanan operasyonel sorumlulukları kabul etmez. Hesaplama kuralları güncellemeleri, gereksinim değişiklikleri veya sistem geliştirmeleri ayrı sözleşme kapsamında gerçekleştirilir.
+            </div>
+        </div>
     </div>
 
     <div class="footer">
-        <p>Bu teklif 7 Temmuz 2025 tarihinde hazırlanmıştır. Detaylı görüşme için bizimle iletişime geçebilirsiniz.</p>
+        <p>Bu teklif 15 Temmuz 2025 tarihinde hazırlanmıştır. Detaylı görüşme için bizimle iletişime geçebilirsiniz.</p>
         <p><strong>FORİVİA DIŞ TİC. LTD. ŞTİ.</strong></p>
         <p>Tekstilkent Koza Plaza A blok K:1 No:2 Esenler İstanbul</p>
         <p>Email: destek@forivia.com • V.D.: Atışalanı • VKN: 3880621924</p>
@@ -447,7 +561,7 @@ async function approveProposal() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 durum: 'TEKLİF ONAYLANDI',
-                mesaj: 'Müşteri teklifi onayladı',
+                mesaj: 'Müşteri güncellenmiş teklifi (Compliance modülü dahil) onayladı - Toplam: 2.030.000 TL',
                 tarih: new Date().toLocaleString('tr-TR')
             })
         });
@@ -459,7 +573,7 @@ async function approveProposal() {
     document.getElementById('thankYouMessage').innerHTML = `
         <p style="color: #1d1d1f; font-weight: 600; margin: 0 0 12px 0; font-size: 16px;">Teşekkür ederiz</p>
         <p style="color: #424245; margin: 0; font-size: 14px; line-height: 1.5;">
-            Teklifinizi onayladığınız için teşekkür ederiz. Bu projeyi birlikte hayata geçireceğimiz için çok memnunuz. 
+            Teklifinizi (Compliance modülü dahil) onayladığınız için teşekkür ederiz. Bu kapsamlı projeyi birlikte hayata geçireceğimiz için çok memnunuz. 
             En kısa sürede sizinle iletişime geçerek proje sürecinin detaylarını ve başlangıç tarihini paylaşacağız.
         </p>
     `;
@@ -474,7 +588,7 @@ async function sendFeedback() {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    durum: 'NOTLAR/FEEDBACK',
+                    durum: 'NOTLAR/FEEDBACK - Güncellenmiş Teklif',
                     mesaj: feedback,
                     tarih: new Date().toLocaleString('tr-TR')
                 })
@@ -487,7 +601,7 @@ async function sendFeedback() {
         document.getElementById('thankYouMessage').innerHTML = `
             <p style="color: #1d1d1f; font-weight: 600; margin: 0 0 12px 0; font-size: 16px;">Notlarınız alındı</p>
             <p style="color: #424245; margin: 0; font-size: 14px; line-height: 1.5;">
-                Geri bildirimlerinizi aldık ve incelemeye başladık. Değerlendirme sürecinin ardından 
+                Güncellenmiş teklif ile ilgili geri bildirimlerinizi aldık ve incelemeye başladık. Değerlendirme sürecinin ardından 
                 en kısa sürede sizinle iletişime geçerek detaylı dönüş yapacağız.
             </p>
         `;
